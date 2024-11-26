@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>AI Chat</title>
+        <link rel="stylesheet" href="styles.css" />
+    </head>
+    <body>
+        <div id="api-key-container">
+            <input
+                type="password"
+                id="api-key-input"
+                placeholder="输入你的 API Key"
+            />
+            <button id="save-key-button">保存</button>
+        </div>
+        <div id="chat-container"></div>
+        <div id="input-container">
+            <input type="text" id="message-input" placeholder="输入消息..." />
+            <button id="send-button">发送</button>
+        </div>
+        <script src="script.js"></script>
+    </body>
+</html>
