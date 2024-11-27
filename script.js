@@ -6,9 +6,9 @@ const sendButton = document.getElementById("send-button");
 
 window.onload = function () {
   const message = `
-    警告：您的 API 密钥将被存储在您的浏览器本地，只会在您的设备上使用，绝不会被外部窃取。请确保您的浏览器安全。\n\n
-    本项目是使用纯 HTML、CSS 和 JavaScript 实现的，所有代码都是公开的，您可以随时通过浏览器的开发者模式查看源代码。\n\n
-    请谨慎处理您的 API 密钥，确保它的安全。`;
+  警告：您的 API 密钥将被存储在您的浏览器本地，只会在您的设备上使用，绝不会被外部窃取。请确保您的浏览器安全。\n\n
+  本项目是使用纯 HTML、CSS 和 JavaScript 实现的，所有代码都是公开的，您可以随时通过浏览器的开发者模式查看源代码。\n\n
+  请谨慎处理您的 API 密钥，确保它的安全。`;
 
   alert(message);
 };
@@ -29,7 +29,14 @@ saveKeyButton.addEventListener("click", () => {
 function addMessage(content, isUser = false) {
   const messageDiv = document.createElement("div");
   messageDiv.className = `message ${isUser ? "user-message" : "ai-message"}`;
-  messageDiv.textContent = content;
+
+  if (!isUser) {
+    const markdownHTML = marked(content);
+    messageDiv.innerHTML = markdownHTML;
+  } else {
+    messageDiv.textContent = content;
+  }
+
   chatContainer.appendChild(messageDiv);
   chatContainer.scrollTop = chatContainer.scrollHeight;
 }
@@ -85,7 +92,9 @@ async function sendMessage() {
           const json = JSON.parse(data);
           const content = json.choices[0].delta.content || "";
           aiResponse += content;
-          aiMessageDiv.textContent = aiResponse;
+
+          aiMessageDiv.innerHTML = marked.parse(aiResponse);
+
           chatContainer.scrollTop = chatContainer.scrollHeight;
         }
       }

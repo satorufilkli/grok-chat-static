@@ -1,3 +1,4 @@
+/* API Key 输入框和按钮 */
 #api-key-container {
     margin-bottom: 20px;
     display: flex;
@@ -18,23 +19,33 @@
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    transition: background-color 0.3s;
 }
 
+#save-key-button:hover {
+    background-color: #218838;
+}
+
+/* 页面整体样式 */
 body {
-    max-width: 800px;
+    max-width: 1000px;
     margin: 20px auto;
     padding: 0 20px;
     font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #f5f5f5;
 }
 
 /* 聊天界面 */
 #chat-container {
-    height: 400px;
+    height: 600px;
     border: 1px solid #ccc;
     padding: 20px;
     overflow-y: auto;
     margin-bottom: 20px;
     border-radius: 5px;
+    background-color: white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 /* 输入区域 */
@@ -57,6 +68,11 @@ body {
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#send-button:hover {
+    background-color: #0056b3;
 }
 
 /* 消息样式 */
@@ -64,14 +80,30 @@ body {
     margin: 10px 0;
     padding: 10px;
     border-radius: 5px;
+    word-wrap: break-word;
 }
 
 .user-message {
     background-color: #e9ecef;
     margin-left: 20%;
+    text-align: left;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .ai-message {
     background-color: #f8f9fa;
     margin-right: 20%;
+    text-align: left;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* 响应式支持 */
+@media (max-width: 600px) {
+    .user-message {
+        margin-left: 10%;
+    }
+
+    .ai-message {
+        margin-right: 10%;
+    }
 }
